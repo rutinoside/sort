@@ -49,7 +49,8 @@ pivot = quick_select(X, n/5, n/10);
       j++;
     }
   }
-int B[], C[];
+int B[0]; 
+int C[0];
 int b=0;
 int c=0;
 for(i = 0; i<n; i++ ){
