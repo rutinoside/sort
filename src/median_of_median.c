@@ -32,6 +32,48 @@ int quick_select(int A[], int n, int k){
   else return quick_select(A+1, j-1, k);
 }
 
+int m_of_m(int A[], int n, int k){
+if(n <=5){
+return quick_select(A, n, k);
+}
+else{
+int X[n/5];
+int i, j, x, pivot;
+for(i = 0; i < n/5; i++){
+         X[i] = quick_select(A+5*i, 5, 2);
+      }
+pivot = quick_select(X, n/5, n/10);
+   for(i = j = 1; i < n; i++){
+    if(A[i] <= pivot){
+      swap(A+i, A+j);
+      j++;
+    }
+  }
+int B[], C[];
+int b=0;
+int c=0;
+for(i = 0; i<n; i++ ){
+if(A[i] <= pivot){
+    B[b]=A[i];
+    b++;
+    }
+else{
+     C[c]=A[i];
+     c++;
+      }
+}
+if(b==k+1){
+return pivot ;
+}
+else if(b<k){
+return quick_select(C, c, k-b);
+}
+else {
+return quick_select(B, b, k+1);
+}
+}
+}
+
 
 int main(){
   int i;
